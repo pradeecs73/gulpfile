@@ -13,11 +13,11 @@ gulp.task('default', ['test','lint']);
       'routes/*.js'
         ];
 
-   gulp.src(coverageSrc)
+  return gulp.src(coverageSrc)
     .pipe(istanbul()) // Covering files
     .pipe(istanbul.hookRequire()) // Force `require` to return covered files
     .on('finish', function () {
-     return gulp.src(coverageSrc)
+      gulp.src(coverageSrc)
         .pipe(mocha())
          .pipe(istanbul.writeReports({
           dir: './gulpcodecoverage',
