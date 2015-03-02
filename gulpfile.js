@@ -13,7 +13,7 @@ gulp.task('default', ['test','lint']);
       'routes/*.js'
         ];
 
-  gulp.src(coverageSrc)
+  return gulp.src(coverageSrc)
     .pipe(istanbul()) // Covering files
     .pipe(istanbul.hookRequire()) // Force `require` to return covered files
     .on('finish', function () {
@@ -42,7 +42,7 @@ gulp.task('lint',['test'],function() {
       'routes/*.js'
   ];
 
-  gulp.src(lintSrc)
+  return gulp.src(lintSrc)
     .pipe(jshint())
     .pipe(jshint.reporter('gulp-jshint-html-reporter', {
       filename: __dirname + '/gulpcodecoverage/jshint-output.html'
